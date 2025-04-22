@@ -78,8 +78,8 @@ const Messages = ({ user, selectedFriend }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          sender: user,
-          recipient: selectedFriend,
+          uname: user,
+          fname: selectedFriend,
           text: newMessage,
           timestamp: new Date().toISOString(),
         }),

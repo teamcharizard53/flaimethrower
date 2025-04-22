@@ -39,7 +39,7 @@ const FriendList = ({ user, setSelectedFriend }) => {
   // Used to logout
   const handleLogout = () => {
     // Navigate back to the login back
-    navigate('/login');
+    navigate('/');
   };
 
   const handleAddFriend = async () => {
@@ -53,8 +53,8 @@ const FriendList = ({ user, setSelectedFriend }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          sender: user,
-          addFriend: addFriend,
+          uname: user,
+          fname: addFriend,
         }),
       });
 
