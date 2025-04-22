@@ -1,0 +1,165 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#dashboard-messages {
+  width: 66.66%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-radius: 0.5rem;
+  border: solid 2px blue;
+  padding: 1rem;
+}
+
+#dashboard-main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: solid 2px blue;
+  width: 100vw;
+}
+
+#dashboard-friend-list {
+  width: 33.33%;
+  height: 100vh;
+  background-color: grey;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  box-sizing: border-box;
+  border: solid 2px blue;
+  gap: 1rem;
+}
+
+#dashboard-messages-send {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+#dashboard-message-list {
+  max-height: 15rem;
+  overflow-y: auto;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#dashboard-message-input {
+  background: #1a1a1a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  max-width: 100%;
+  flex: 1;
+}
+
+#dashboard-message-button {
+  background: #4a4a4a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.6);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#dashboard-message-button:hover {
+  background: #666;
+}
+
+#dashboard-friend-list-subcontainer {
+  display: flex;
+  flex-direction: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+#dashboard-logout-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+#dashboard-friend-list-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#dashboard-friend-list-names {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#dashboard-buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#dashboard-add-friend-input {
+  background: #1a1a1a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  max-width: 100%;
+}
+
+.dashboard-buttons {
+  background: #4a4a4a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.6);
+  transition: background 0.2s ease;
+}
+
+.dashboard-buttons:hover {
+  background: #666;
+}
+
+.dashboard-friend-name-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.dashboard-friend-name-button:hover {
+  text-decoration: underline;
+}
