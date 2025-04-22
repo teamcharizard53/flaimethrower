@@ -3,13 +3,41 @@ import { useState, useEffect } from 'react';
 const Messages = ({ user, selectedFriend }) => {
   // used to keep track of users messages
   const [messages, setMessages] = useState([
-    { Anthony: 'Hello!' },
-    { Katherine: 'How are you?' },
-    { Anthony: 'Good, how about you?' },
-    { Katherine: 'Great! Thanks for asking.' },
-    { Anthony: 'Lovely waether today am I right?' },
-    { Katherine: 'Yes! I think the sun it great!' },
-    { Anthony: 'Sweet Beans.' },
+    {
+      sender: 'Anthony',
+      text: 'Hello!',
+      timestamp: '2025-04-22T14:35:00Z',
+    },
+    {
+      sender: 'Katherine',
+      text: 'How are you?',
+      timestamp: '2025-04-22T14:36:00Z',
+    },
+    {
+      sender: 'Anthony',
+      text: 'Good, how about you?',
+      timestamp: '2025-04-22T14:37:00Z',
+    },
+    {
+      sender: 'Katherine',
+      text: 'Great! Thanks for asking.',
+      timestamp: '2025-04-22T14:38:00Z',
+    },
+    {
+      sender: 'Anthony',
+      text: 'Lovely weather today am I right?',
+      timestamp: '2025-04-22T14:39:00Z',
+    },
+    {
+      sender: 'Katherine',
+      text: 'Yes! I think the sun it great!',
+      timestamp: '2025-04-22T14:40:00Z',
+    },
+    {
+      sender: 'Anthony',
+      text: 'Sweet Beans.',
+      timestamp: '2025-04-22T14:41:00Z',
+    },
   ]);
 
   const [newMessage, setNewMessage] = useState('');
@@ -53,6 +81,7 @@ const Messages = ({ user, selectedFriend }) => {
           sender: user,
           recipient: selectedFriend,
           text: newMessage,
+          timestamp: new Date().toISOString(),
         }),
       });
 
@@ -70,21 +99,29 @@ const Messages = ({ user, selectedFriend }) => {
   return (
     <div id='dashboard-messages'>
       <div id='dashboard-message-list'>
-        {messages.map((message, index) => {
-          for (const [sender, text] of Object.entries(message)) {
-            return (
-              <p key={index}>
-                <strong>{sender}:</strong> {text}
-              </p>
-            );
-          }
-        })}
+        {!selectedFriend ? (
+          <p>Select a friend to start chatting.</p>
+        ) : (
+          messages.map((message, index) => (
+            <div key={index} className='dashboard-message-bubble'>
+              <span className='dashboard-message-text'>
+                <strong>{message.sender}:</strong> {message.text}
+              </span>
+              <span className='dashboard-timestamp'>
+                {new Date(message.timestamp).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </span>
+            </div>
+          ))
+        )}
       </div>
-
       <div id='dashboard-messages-send'>
         <input
           placeholder='Enter Message Here'
           id='dashboard-message-input'
+          value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
         />
         <button

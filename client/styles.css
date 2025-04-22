@@ -12,9 +12,16 @@ body,
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  border-radius: 0.5rem;
-  border: solid 2px blue;
   padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+#dashboard-messages:hover {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 6px 24px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 #dashboard-main-container {
@@ -22,8 +29,10 @@ body,
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  border: solid 2px blue;
   width: 100vw;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 #dashboard-friend-list {
@@ -34,7 +43,6 @@ body,
   flex-direction: row;
   padding: 1rem;
   box-sizing: border-box;
-  border: solid 2px blue;
   gap: 1rem;
 }
 
@@ -48,7 +56,7 @@ body,
 }
 
 #dashboard-message-list {
-  max-height: 15rem;
+  max-height: 21rem;
   overflow-y: auto;
   width: 100%;
   margin-bottom: 1rem;
@@ -131,6 +139,21 @@ body,
   max-width: 100%;
 }
 
+#dashboard-message-list p {
+  background-color: #2d2d2d;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  width: fit-content;
+  max-width: 75%;
+}
+
+#dashboard-message-list p:first-child {
+  text-align: center;
+  color: #ccc;
+}
+
 .dashboard-buttons {
   background: #4a4a4a;
   border: none;
@@ -162,4 +185,44 @@ body,
 
 .dashboard-friend-name-button:hover {
   text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.dashboard-friend-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.dashboard-online-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #00ff00;
+  display: inline-block;
+}
+
+.dashboard-message-bubble {
+  background-color: #2d2d2d;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  max-width: 75%;
+  width: fit-content;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+.dashboard-timestamp {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 0.25rem;
+  display: block;
+  text-align: right;
 }

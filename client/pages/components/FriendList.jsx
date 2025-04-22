@@ -5,11 +5,11 @@ const FriendList = ({ user, setSelectedFriend }) => {
   const navigate = useNavigate();
   const [addFriend, setAddFriend] = useState('');
   const [friendList, setFriendList] = useState([
-    'aiBot',
-    'Monique',
-    'Katherine',
-    'Samyak',
-    'Reva',
+    { name: 'aiBot', online: true },
+    { name: 'Monique', online: false },
+    { name: 'Reva', online: true },
+    { name: 'Katherine', online: false },
+    { name: 'Samyak', online: true },
   ]);
 
   // Used to get friendlist from the backend
@@ -75,13 +75,15 @@ const FriendList = ({ user, setSelectedFriend }) => {
         <h2>Friend List (0/{friendList.length})</h2>
         <div id='dashboard-friend-list-names'>
           {friendList.map((friend, idx) => (
-            <button
-              key={idx}
-              className='dashboard-friend-name-button'
-              onClick={() => setSelectedFriend(friend)}
-            >
-              {friend}
-            </button>
+            <div key={idx} className='dashboard-friend-entry'>
+              <button
+                className='dashboard-friend-name-button'
+                onClick={() => setSelectedFriend(friend.name)}
+              >
+                {friend.name}
+              </button>
+              {friend.online && <span className='dashboard-online-dot'></span>}
+            </div>
           ))}
         </div>
       </div>
