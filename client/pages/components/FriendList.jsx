@@ -42,6 +42,7 @@ const FriendList = ({ user, setSelectedFriend }) => {
     navigate('/');
   };
 
+  // Used to add friends
   const handleAddFriend = async () => {
     // Checks if there is a friend to add
     if (!addFriend.trim()) return;
@@ -69,6 +70,27 @@ const FriendList = ({ user, setSelectedFriend }) => {
     }
   };
 
+  // Used to delete friends
+  const handleDeleteFriend = async (friendName) => {
+    try {
+      // Assign result to the result of the json result of the backend request
+      await fetch('http://localhost:3000/api/friendlist', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          uname: user,
+          fname: friendName,
+        }),
+      });
+      // Remove friend from state
+      setFriendList((prev) => prev.filter((f) => f.name !== friendName));
+    } catch (err) {
+      console.error('Failed to send message:', err);
+    }
+  };
+
   return (
     <div id='dashboard-friend-list'>
       <div id='dashboard-friend-list-header'>
@@ -76,13 +98,21 @@ const FriendList = ({ user, setSelectedFriend }) => {
         <div id='dashboard-friend-list-names'>
           {friendList.map((friend, idx) => (
             <div key={idx} className='dashboard-friend-entry'>
-              <button
-                className='dashboard-friend-name-button'
-                onClick={() => setSelectedFriend(friend.name)}
-              >
-                {friend.name}
-              </button>
               {friend.online && <span className='dashboard-online-dot'></span>}
+              <div className='dashboard-friend-name-wrapper'>
+                <button
+                  className='dashboard-friend-name-button'
+                  onClick={() => setSelectedFriend(friend.name)}
+                >
+                  {friend.name}
+                </button>
+                <button
+                  className='dashboard-delete-friend-button'
+                  onClick={() => handleDeleteFriend(friend.name)}
+                >
+                  ❌
+                </button>
+              </div>
             </div>
           ))}
         </div>

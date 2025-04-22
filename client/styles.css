@@ -154,6 +154,27 @@ body,
   color: #ccc;
 }
 
+.dashboard-friend-name-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.dashboard-delete-friend-button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.dashboard-friend-name-wrapper:hover .dashboard-delete-friend-button {
+  opacity: 1;
+}
+
 .dashboard-buttons {
   background: #4a4a4a;
   border: none;
