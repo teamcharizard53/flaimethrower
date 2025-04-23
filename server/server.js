@@ -1,19 +1,23 @@
 // Importing necessary packages
 
 // Express: Web server framework
-const express = require('express');
+import express from 'express';
 
 // Node's built-in HTTP module (needed for WebSockets)
-const http = require('http');
+import http from 'http';
 
 // Socket.IO server for real-time communication
-const { Server } = require('socket.io');
+import { Server } from 'socket.io';
 
 // CORS: Allows frontend running on a different port to access backend
-const cors = require('cors');
+import cors from 'cors';
+
+import router from './routes/router.js'
 
 // Loads variables from the .env file
-require('dotenv').config();
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Initialize Express app
 const app = express();
@@ -34,12 +38,15 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: 'http://localhost:5173', // FIXED typo: 'httos' → 'http'
-    methods: ['GET', 'POST'],         // Allow frontend to make GET/POST requests
+    methods: ['GET', 'POST','DELETE'],         // Allow frontend to make GET/POST requests
   },
 });
 
 // In-memory store for messages (optional - used for testing/demo)
 let messageHistory = [];
+
+//Routes
+app.use('/api', router);
 
 // Add a basic GET / route for browser testing
 app.get('/', (req, res) => {
