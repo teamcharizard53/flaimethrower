@@ -1,50 +1,58 @@
-// Import React and useState for managing local state
 import React, { useState } from 'react';
-// Import useNavigate to navigate to another page
 import { useNavigate } from 'react-router-dom';
-// Import css for the register page
 import './Register.css';
 
 function Register() {
-  // State to store the username entered by the user
   const [username, setUsername] = useState('');
-
-  // Hook to programmatically navigate to another route
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  // Function that runs when the user clicks the "Register" button
-  const handleRegister = () => {
-    // Validate that the username is not just empty or spaces
-    if (!username.trim()) {
-      alert('Please enter a username');
+  const handleRegister = async () => {
+    if (!username.trim() || !password.trim()) {
+      alert('Please enter a username and password');
       return;
     }
 
-    // Save the username to localStorage for session persistence
-    localStorage.setItem('flaimethrower_username', username.trim());
+    try {
+      const response = await fetch('http://localhost:3001/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: username.trim(), password: password.trim() }),
+      });
 
-    // Navigate to the dashboard page
-    navigate('/dashboard');
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('flaimethrower_username', username.trim());
+        navigate('/dashboard');
+      } else {
+        alert(data.message || 'Registration failed');
+      }
+    } catch (err) {
+      alert('Error connecting to server');
+    }
   };
 
   return (
-    // Wrapper for the register UI
     <div className="register-container">
-      {/* App title */}
       <h1>🔥 Flaimethrower Register</h1>
 
-      {/* Input for choosing a username */}
       <input
-        type="text"                              // Text input
-        placeholder="Choose a username"          // Placeholder shown inside the input
-        value={username}                         // Bind to username state
-        onChange={(e) => setUsername(e.target.value)} // Update state when user types
+        type="text"
+        placeholder="Choose a username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
 
-      {/* Button to submit the registration */}
+      <input
+        type="password"
+        placeholder="Choose a password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
       <button onClick={handleRegister}>Register</button>
 
-      {/* Optional: Add a link to the login page if user already has an account */}
       <p>
         Already have an account? <a href="/">Login here</a>
       </p>
@@ -52,5 +60,4 @@ function Register() {
   );
 }
 
-// Export the component to use it in routing
 export default Register;
