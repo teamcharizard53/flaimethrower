@@ -48,7 +48,7 @@ const FriendList = ({ user, setSelectedFriend }) => {
     if (!addFriend.trim()) return;
     try {
       // Assign result to the result of the json result of the backend request
-      const result = await fetch('http://localhost:3000/api/friendlist', {
+      const result = await fetch('http://localhost:3000/api/addfriend', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,6 @@ const FriendList = ({ user, setSelectedFriend }) => {
           fname: addFriend,
         }),
       });
-
       // assign new friend to the parsed json result
       const newFriend = await result.json();
       // Update the friend list

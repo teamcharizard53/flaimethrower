@@ -1,10 +1,9 @@
-import { Friends, Users, Messages } from '../models';
+import { Friends, Users, Messages } from '../models.js';
 
 const friendsController = {};
 
 friendsController.addFriend = async (req, res, next) => {
   const { uname, fname } = req.body;
-
   const userExists = await Users.findOne({ username: uname });
   const userFriends = await Friends.findOne({ username: uname });
   const friendExists = await Users.findOne({ username: fname });
@@ -17,6 +16,10 @@ friendsController.addFriend = async (req, res, next) => {
       { new: true }
     );
     console.log('New Friend added: ', newFriend);
+    
+    // Added for testing purposes
+    // res.locals.newFriend = {name:fname, status: 'online'}
+
     return next();
   } else {
     return next({ error: 'One or both usernames could not be found.' });

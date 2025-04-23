@@ -1,4 +1,5 @@
-import { Users, Friends } from '../models';
+import { Users, Friends } from '../models.js';
+
 
 const userController = {};
 
