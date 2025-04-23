@@ -1,0 +1,23 @@
+.register-container {
+    width: 300px;
+    margin: 100px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .register-container input {
+    padding: 10px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  
+  .register-container button {
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .register-container h1 {
+    color: darkred;
+  }
+  
