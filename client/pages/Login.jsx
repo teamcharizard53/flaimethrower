@@ -17,14 +17,17 @@ function Login() {
       const response = await fetch('http://localhost:3001/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: username.trim(), password: password.trim() }),
+        body: JSON.stringify({
+          uname: username.trim(),
+          pword: password.trim(),
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         localStorage.setItem('flaimethrower_username', username.trim());
-        navigate('/dashboard');
+        navigate(`/dashboard/${data}`);
       } else {
         alert(data.message || 'Login failed');
       }
@@ -34,24 +37,25 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className='login-container'>
       <h1>🔥 Flaimethrower Login</h1>
 
       <input
-        type="text"
-        placeholder="Enter your username"
+        type='text'
+        placeholder='Enter your username'
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
 
       <input
-        type="password"
-        placeholder="Enter your password"
+        type='password'
+        placeholder='Enter your password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 
       <button onClick={handleLogin}>Login</button>
+      <button onClick={() => navigate('/register')}>Register</button>
     </div>
   );
 }

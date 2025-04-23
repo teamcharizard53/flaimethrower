@@ -17,14 +17,14 @@ function Register() {
       const response = await fetch('http://localhost:3001/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: username.trim(), password: password.trim() }),
+        body: JSON.stringify({ uname: username.trim(), pword: password.trim() }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         localStorage.setItem('flaimethrower_username', username.trim());
-        navigate('/dashboard');
+        navigate(`/dashboard/${data}`);
       } else {
         alert(data.message || 'Registration failed');
       }

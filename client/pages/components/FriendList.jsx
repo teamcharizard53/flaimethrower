@@ -20,13 +20,13 @@ const FriendList = ({ user, setSelectedFriend }) => {
     const fetchFriendList = async () => {
       try {
         // Assign result to the json result
-        const result = await fetch(
-          `http://localhost:3000/api/friendlist/${user}`
-        );
-        // Assign data to the parsed json result
-        const data = await result.json();
-        // Set friend list to the receieved data from the back end
-        setFriendList(data);
+        // const result = await fetch(
+        //   `http://localhost:3000/api/friendlist/${user}`
+        // );
+        // // Assign data to the parsed json result
+        // const data = await result.json();
+        // // Set friend list to the receieved data from the back end
+        // setFriendList(data);
       } catch (err) {
         console.error('Failed to fetch messages:', err);
       }

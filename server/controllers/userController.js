@@ -3,9 +3,13 @@ import { Users, Friends } from '../models.js';
 const userController = {};
 
 userController.register = async (req, res, next) => {
-  const { uname, pword, email } = req.body;
+  const { uname, pword } = req.body;
 
-  const newUser = new Users({ username: uname, password: pword, email: email });
+  const newUser = new Users({
+    username: uname,
+    password: pword,
+    email: 'placeholder@bad.com',
+  });
   const newUserFriends = new Friends({
     username: uname,
     friendList: [

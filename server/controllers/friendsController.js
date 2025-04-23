@@ -104,4 +104,15 @@ friendsController.updateMessages = async (req, res, next) => {
   }
 };
 
+friendsController.getFriends = async (req, res, next) => {
+  const { user } = req.params;
+  Friends.findOne({ username: user })
+    .then((response) => response)
+    .then((data) => {
+      const friendList = data.friendList;
+      res.locals.friendList = friendList;
+      return next();
+    });
+};
+
 export { friendsController };

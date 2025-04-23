@@ -13,6 +13,16 @@ router.post('/register', userController.register, (req, res) => {
   res.status(200).json(res.locals.username);
 });
 
-router.post('/message', friendsController.updateMessages)
+router.post('/message', friendsController.updateMessages, (req, res) => {
+  res.status(200).send('Message sent!');
+});
+
+router.post('/login', userController.login, (req, res) => {
+  res.status(200).json(res.locals.username);
+});
+
+router.get('/friendlist/:user', friendsController.getFriends, (req, res) => {
+  res.status(200).json(res.locals.friendList);
+});
 
 export default router;

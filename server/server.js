@@ -10,9 +10,9 @@ import http from 'http';
 import { Server } from 'socket.io';
 
 // CORS: Allows frontend running on a different port to access backend
-import cors from 'cors';
+import CORS from 'cors';
 
-import router from './routes/router.js'
+import router from './routes/router.js';
 
 // Loads variables from the .env file
 
@@ -22,9 +22,20 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
-// Enable CORS middleware
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
+// Enable CORS middleware
+// app.use(cors(corsOptions));
+app.use(
+  CORS({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  })
+);
 // Allow Express to parse incoming JSON data
 app.use(express.json());
 
@@ -38,7 +49,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: 'http://localhost:5173', // FIXED typo: 'httos' → 'http'
-    methods: ['GET', 'POST','DELETE'],         // Allow frontend to make GET/POST requests
+    methods: ['GET', 'POST', 'DELETE'], // Allow frontend to make GET/POST requests
   },
 });
 
