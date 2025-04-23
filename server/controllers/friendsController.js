@@ -8,15 +8,28 @@ friendsController.addFriend = async (req, res, next) => {
   const userFriends = await Friends.findOne({ username: uname });
   const friendExists = await Users.findOne({ username: fname });
 
+  console.log('fname: ', fname);
+  console.log('uname: ', uname);
+
   if (userExists && friendExists) {
-    userFriends.friendList.set(fName, []);
+    console.log('userExists: ', userExists);
+    console.log('userFriend: ', userFriends);
+    userFriends.friendList.push({
+      friendName: fname,
+      messages: [
+        {
+          from: '<flaimethrower-admin>',
+          message: `${uname} and ${fname} are now friends!`,
+        },
+      ],
+    });
     const newFriend = await Friends.findOneAndUpdate(
       { username: uname },
       { friendList: userFriends.friendList },
       { new: true }
     );
     console.log('New Friend added: ', newFriend);
-    
+
     // Added for testing purposes
     // res.locals.newFriend = {name:fname, status: 'online'}
 
@@ -49,15 +62,32 @@ friendsController.updateMessages = async (req, res, next) => {
   const userFriends = await Friends.findOne({ username: uname });
   const receiving = await Friends.findOne({ username: fname });
 
-  if (userFriends.friendList.has(fname)) {
-    const uMessages = userFriends.friendList[fname];
-    const fMessages = receiving.freindsList[uname];
-    const sentMessage = new Messages({ sender: uname, text: text });
-    const recMessage = new Messages({ sender: fname, text: text });
-    uMessages.push(sentMessage);
-    fMessages.push(recMessagel);
-    userFriends.friendList[fname] = uMessages;
-    receiving.friendList[uname] = fMessages;
+  if (userFriends && receiving) {
+    let i = 0;
+    let j = 0;
+    while (
+      i < userFriends.friendList.length &&
+      userFriends.friendlist[i].friendName !== fname
+    ) {
+      i++;
+    }
+    while (
+      j < receiving.friendList.length &&
+      receiving.friendlist[j].friendName !== uname
+    ) {
+      j++;
+    }
+    console.log('i: ', i);
+    console.log('j:', j);
+
+    const uMessages = userFriends.friendList[i];
+    const fMessages = receiving.friendList[j];
+    const sentMessage = { sender: uname, text: text };
+    const recMessage = { sender: fname, text: text };
+    uMessages.messages.push(sentMessage);
+    fMessages.messages.push(recMessagel);
+    userFriends.friendList[i] = uMessages;
+    receiving.friendList[j] = fMessages;
 
     Friends.findOneAndUpdate(
       { username: uname },
@@ -71,8 +101,6 @@ friendsController.updateMessages = async (req, res, next) => {
         return next();
       });
     });
-  } else {
-    return next({ error: 'Friend name could not be found.' });
   }
 };
 

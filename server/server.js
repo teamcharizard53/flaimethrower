@@ -29,7 +29,7 @@ app.use(cors());
 app.use(express.json());
 
 // Define port where your server will run
-const port = 3000;
+const port = 3001;
 
 // Create an HTTP server and pass in your Express app
 const server = http.createServer(app);

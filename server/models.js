@@ -29,17 +29,17 @@ const messageSchema = new Schema(
 
 const Messages = mongoose.model('message', messageSchema);
 
-// const friendSchema = new Schema({
-//   username: String,
-//   friendList: [
-//     { friendName: String, messages: [{ from: String, message: String }] },
-//   ],
-// });
-
 const friendSchema = new Schema({
   username: String,
-  friendList: { type: Map, of: [messageSchema] },
+  friendList: [
+    { friendName: String, messages: [{ from: String, message: String }] },
+  ],
 });
+
+// const friendSchema = new Schema({
+//   username: String,
+//   friendList: { type: Map, of: [  messageSchema] },
+// });
 
 const Friends = mongoose.model('friend', friendSchema);
 
