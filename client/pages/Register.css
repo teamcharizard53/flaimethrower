@@ -1,0 +1,63 @@
+.register-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+  
+  .register-container h1 {
+    margin-bottom: 20px;
+    color: #ff4d4d;
+    font-size: 28px;
+  }
+  
+  .register-container input {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .register-container input:focus {
+    border-color: #ff4d4d;
+  }
+  
+  .register-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .register-container button:hover {
+    background-color: #e64343;
+  }
+  
+  .register-container p {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .register-container a {
+    color: #ff4d4d;
+    text-decoration: none;
+  }
+  
+  .register-container a:hover {
+    text-decoration: underline;
+  }
+  
