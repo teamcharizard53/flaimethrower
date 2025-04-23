@@ -1,0 +1,249 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#dashboard-messages {
+  width: 66.66%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+#dashboard-messages:hover {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 6px 24px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+#dashboard-main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100vw;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#dashboard-friend-list {
+  width: 33.33%;
+  height: 100vh;
+  background-color: grey;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+
+#dashboard-messages-send {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+#dashboard-message-list {
+  max-height: 21rem;
+  overflow-y: auto;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#dashboard-message-input {
+  background: #1a1a1a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  max-width: 100%;
+  flex: 1;
+}
+
+#dashboard-message-button {
+  background: #4a4a4a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.6);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#dashboard-message-button:hover {
+  background: #666;
+}
+
+#dashboard-friend-list-subcontainer {
+  display: flex;
+  flex-direction: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+#dashboard-logout-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+#dashboard-friend-list-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#dashboard-friend-list-names {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#dashboard-buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#dashboard-add-friend-input {
+  background: #1a1a1a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  max-width: 100%;
+}
+
+#dashboard-message-list p {
+  background-color: #2d2d2d;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  width: fit-content;
+  max-width: 75%;
+}
+
+#dashboard-message-list p:first-child {
+  text-align: center;
+  color: #ccc;
+}
+
+.dashboard-friend-name-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.dashboard-delete-friend-button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.dashboard-friend-name-wrapper:hover .dashboard-delete-friend-button {
+  opacity: 1;
+}
+
+.dashboard-buttons {
+  background: #4a4a4a;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.6);
+  transition: background 0.2s ease;
+}
+
+.dashboard-buttons:hover {
+  background: #666;
+}
+
+.dashboard-friend-name-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.dashboard-friend-name-button:hover {
+  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.dashboard-friend-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.dashboard-online-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #00ff00;
+  display: inline-block;
+}
+
+.dashboard-message-bubble {
+  background-color: #2d2d2d;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  max-width: 75%;
+  width: fit-content;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+.dashboard-timestamp {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 0.25rem;
+  display: block;
+  text-align: right;
+}
